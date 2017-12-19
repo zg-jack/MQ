@@ -1,0 +1,68 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>Send</servlet-name>
+  	<display-name>Send</display-name>
+  	<description></description>
+  	<servlet-class>com.zhuguang.jack.jms.Send</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Receive</servlet-name>
+  	<display-name>Receive</display-name>
+  	<description></description>
+  	<servlet-class>com.zhuguang.jack.jms.Receive</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Receive1</servlet-name>
+  	<display-name>Receive1</display-name>
+  	<description></description>
+  	<servlet-class>com.zhuguang.jack.jms.Receive1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Send</servlet-name>
+  	<url-pattern>/Send</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Receive</servlet-name>
+  	<url-pattern>/Receive</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Receive1</servlet-name>
+  	<url-pattern>/Receive1</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>Publisher</servlet-name>
+  	<display-name>Publisher</display-name>
+  	<description></description>
+  	<servlet-class>com.zhuguang.jack.topic.Publisher</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Subscriber</servlet-name>
+  	<display-name>Subscriber</display-name>
+  	<description></description>
+  	<servlet-class>com.zhuguang.jack.topic.Subscriber</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Subscriber1</servlet-name>
+  	<display-name>Subscriber1</display-name>
+  	<description></description>
+  	<servlet-class>com.zhuguang.jack.topic.Subscriber1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Publisher</servlet-name>
+  	<url-pattern>/Publisher</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Subscriber</servlet-name>
+  	<url-pattern>/Subscriber</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Subscriber1</servlet-name>
+  	<url-pattern>/Subscriber1</url-pattern>
+  </servlet-mapping>
+</web-app>
