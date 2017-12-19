@@ -48,37 +48,36 @@ public class Send extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         try {
-            //1������Ҫ��ȡJNDI��������
+            //1、我们要获取JNDI的上下文
             InitialContext context = new InitialContext();
             
-            //2����ȡ��Ϣ��Ӧqueue
+            //2、获取消息对应queue
             Queue queue = (Queue)context.lookup("java:comp/env/queue/jackqueue");
             
-            //3����ȡ���е����ӵĹ���QueueConnectionFactory
+            //3、获取队列的连接的工厂QueueConnectionFactory
             QueueConnectionFactory conFactory = (QueueConnectionFactory)context.lookup("java:comp/env/queue/connectionFactory");
             
-            //4����ȡQueueConnection
+            //4、获取QueueConnection
             queCon = conFactory.createQueueConnection();
             
-            //5����ȡ���еĻỰQueueSession
+            //5、获取队列的会话QueueSession
             QueueSession queSession = queCon.createQueueSession(false,
                     Session.DUPS_OK_ACKNOWLEDGE);
-            //6������һ����Ϣ�������,����Ҫ������Ϣ������ߣ��Ѵ�������Ϣ�ŵ���һ����������
+            //6、创建一个消息的生产者,必须要告诉消息的生产者，把创建的消息放到哪一个队列里面
             QueueSender queSender = queSession.createSender(queue);
             
             int i = 0;
             while (true) {
-                //7������һ����Ϣ
+                //7、创建一个消息
                 TextMessage message = queSession.createTextMessage("hello my name is jack"
                         + "【" + i++ + "】");
                 
-                //8����Ϣ�ķ���
+                //8、消息的发送
                 queSender.send(message);
                 System.out.println("Message Send:" + message.getText());
                 Thread.sleep(1000);
             }
             
-            //            out.write("Message send:" + message.getText());
         }
         catch (Exception e) {
             e.printStackTrace();
